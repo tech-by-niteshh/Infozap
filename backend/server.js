@@ -16,30 +16,38 @@ const port = process.env.PORT || 5000;
 
 app.set("trust proxy", true);
 
-const configuredOrigins = (process.env.CLIENT_ORIGIN || "")
+const configuredOrigins = (process.env.CLIENT_ORIGIN || "https://infozap-omega.vercel.app")
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
 
-const isAllowedOrigin = (origin) => {
-  if (!origin) {
-    return true;
-  }
+const corsOptions = {
+  origin(origin, callback) {
+    if (!origin) {
+      callback(null, true);
+      return;
+    }
 
-  if (configuredOrigins.length === 0) {
-    return true;
-  }
+    if (configuredOrigins.includes(origin)) {
+      callback(null, true);
+      return;
+    }
 
-  if (configuredOrigins.includes(origin)) {
-    return true;
-  }
+    try {
+      const parsedOrigin = new URL(origin);
+      if (["localhost", "127.0.0.1"].includes(parsedOrigin.hostname)) {
+        callback(null, true);
+        return;
+      }
+    } catch (error) {
+      // Ignore parse failures and fall through to the block below.
+    }
 
-  try {
-    const parsedOrigin = new URL(origin);
-    return ["localhost", "127.0.0.1"].includes(parsedOrigin.hostname);
-  } catch (error) {
-    return false;
-  }
+    callback(new Error(`CORS blocked for origin: ${origin}`));
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
 };
 
 const ensureDatabaseConnection = async (req, res, next) => {
@@ -52,19 +60,7 @@ const ensureDatabaseConnection = async (req, res, next) => {
   }
 };
 
-app.use(
-  cors({
-    origin(origin, callback) {
-      if (isAllowedOrigin(origin)) {
-        callback(null, true);
-        return;
-      }
-
-      callback(new Error(`CORS blocked for origin: ${origin}`));
-    },
-    credentials: true,
-  })
-);
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger);
