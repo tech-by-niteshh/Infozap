@@ -1,4 +1,4 @@
-function postData() {
+async function postData() {
     const author = document.getElementById("author").value.trim();
     const title = document.getElementById("title").value.trim();
     const category = document.getElementById("category").value.trim();
@@ -15,24 +15,32 @@ function postData() {
     document.getElementById("pAuthor").innerText = "By " + author;
     document.getElementById("pCategory").innerText = "Category: " + category;
 
-    if (!window.InfozapAPI) {
-        alert("API connection helper not loaded.");
-        return;
-    }
-
-    window.InfozapAPI.createPost({
-        author,
+    const post = {
         title,
+        author,
         newsContent: news,
         category,
         imageUrl: ""
-    })
-        .then((data) => {
-            alert("Post Saved ✅");
-            console.log(data);
-        })
-        .catch((error) => {
-            console.log(error);
-            alert(`Error saving post ❌ ${error.message}`);
+    };
+
+    try {
+        const response = await fetch("https://infozap-omega.vercel.app/api/posts", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(post)
         });
+
+        if (response.ok) {
+            alert("Post Saved Successfully! ✅");
+            return;
+        }
+
+        console.error("Server Error:", response.status);
+        alert(`Error saving post ❌ ${response.status}`);
+    } catch (error) {
+        console.error("CORS or Network Error ❌", error);
+        alert("CORS or Network Error ❌");
+    }
 }
