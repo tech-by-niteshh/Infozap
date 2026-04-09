@@ -156,3 +156,68 @@ body {
 .team-roles p:last-child {
   margin-bottom: 0;
 }
+
+@media (max-width: 540px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .about-hero {
+    padding: 72px 0 110px;
+  }
+
+  .about-hero h1 {
+    font-size: 1.85rem;
+    line-height: 1.15;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .speech-card {
+    margin-top: -56px;
+    padding: 24px 18px;
+    border-radius: 16px;
+  }
+
+  .quote-icon {
+    left: 20px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
+  }
+
+  .speech-text h2 {
+    font-size: 1.45rem;
+    line-height: 1.25;
+  }
+
+  .speech-text p,
+  .team-roles p {
+    font-size: 0.98rem;
+    text-align: left;
+  }
+
+  .team-breakdown {
+    gap: 20px;
+    margin-top: 28px;
+    padding: 20px 16px;
+  }
+
+  .name {
+    font-size: 1.15rem;
+  }
+
+  .dei-honors {
+    margin: 38px 0;
+  }
+
+  .dei-logo {
+    width: 64px;
+  }
+
+  .about-footer {
+    padding-bottom: 40px;
+  }
+}
