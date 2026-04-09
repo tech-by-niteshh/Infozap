@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infozap</title>
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="assets/icons/logo.png" type="image/x-icon">
+</head>
+<body>
+
+    <header class="header">
+        <div class="top-bar">
+            <div class="container flex-space-between">
+                <div class="logo">INFOZAP</div>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/infozap_0/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=infozap@zohomail.in&su=Mail from Infozap&body=Hi Nitesh" target="_blank" class="social-icon"><i class="far fa-envelope"></i></a>
+                    <a href="https://t.me/Infozap_0" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>        
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <div class="container flex-space-between">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="category.html">Category</a></li>
+                </ul>
+                <a href="compose.html" class="cta-button">Upload content</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container text-center">
+                <h1 class="hero-title">
+                    you can find <span class="blue-text">most viral </span><br>
+                    <span class="blue-outline">current affairs </span>at this one place
+                </h1>
+                <form class="search-container" id="searchForm" action="category.html" method="get">
+                    <input type="text" id="searchInput" name="search" placeholder="Search for news" class="search-input">
+                    <button id="searchBtn" class="search-btn" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section class="news-dark-section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <p class="section-kicker">Latest Updates</p>
+                        <h2 class="section-title">see what is going to viral</h2>
+                        <p class="section-description">Decoding the chaos. ⚡ Latest updates in Tech, AI, and Global Affairs</p>
+                    </div>
+                </div>
+                <div class="spotlight-carousel" id="featuredGrid" aria-live="polite" aria-label="Latest updates carousel"></div>
+                <div class="carousel-pagination" id="carouselPagination" aria-label="Select spotlight card"></div>
+            </div>
+        </section>
+
+        <section class="advice-light-section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <p class="section-kicker dark-kicker">Analysis & Advice</p>
+                        <h2 class="section-title dark-text">The pulse of the world, delivered in a zap.</h2>
+                        <p class="section-description light-description">
+                            Quick summaries, exam-ready angles and short takeaways now stay clean and readable.
+                        </p>
+                    </div>
+                </div>
+                <div class="advice-grid" id="adviceGrid"></div>
+                <div class="center-btn">
+                    <button class="btn-more" id="loadMoreAdviceBtn" type="button">Load More Latest Posts</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h2 class="footer-logo">INFOZAP</h2>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="category.html">Category</a></li>
+                        <li><a href="compose.html">Upload</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>For inquiries and news tips:</p>
+                    <p><strong>Email:</strong> infozap@zohomail.in</p>
+                    <p>Dayalbagh educational Institute, Uttar Pradesh, India</p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Follow Us</h3>
+                    <div class="footer-socials">
+                        <a href="https://www.instagram.com/infozap_0/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=infozap@zohomail.in&su=Mail from Infozap&body=Hi Nitesh" target="_blank"><i class="far fa-envelope"></i></a>
+                        <a href="https://t.me/Infozap_0" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>                    </div>
+                </div>
+            </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Infozap - Your Viral Current Affairs Hub</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/index.js"></script>
+</body>
+</html>
+
+
+
+

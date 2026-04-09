@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <link rel="stylesheet" href="assets/css/compose.css">
+<link rel="shortcut icon" href="assets/icons/logo.png" type="image/x-icon">    
+</head>
+
+<body>
+
+    <div class="view">
+        <a href="category.html"><button>View Posts</button></a>
+    </div>
+
+    <div class="container">
+        <h2>Create Your Post</h2>
+
+        <!-- ✅ NEW AUTHOR FIELD -->
+        <input type="text" id="author" placeholder="Author Name">
+
+        <input type="text" id="title" placeholder="Enter Title">
+
+        <select id="category">
+    <option value="" disabled selected>Choose Category</option>
+    
+    <option value="IOT">Internet of Things (IoT)</option>
+    <option value="AI">Artificial Intelligence</option>
+    <option value="Software Development">Software Development</option>
+    <option value="Science">Science & Space</option>
+    
+    <option value="Study">Educational Updates</option>
+    <option value="Result">Exam Results</option>
+    <option value="Career">Jobs & Career</option>
+    
+    <option value="Political">Political Affairs</option>
+    <option value="Defence">Defence & Security</option>
+    <option value="International">World News</option>
+    
+    <option value="Health">Health & Wellness</option>
+    <option value="Medical">Medical Science</option>
+    <option value="Sports">Sports</option>
+    
+    <option value="Finance">Business & Finance</option>
+    <option value="Products">Product Reviews</option>
+    <option value="Automotive">Auto & Transport</option>
+    
+    <option value="Viral News">Viral News</option>
+    <option value="Environment">Environment & Climate</option>
+</select>
+
+        <textarea id="news" placeholder="Write your news..."></textarea>
+
+        <button onclick="postData()">Post</button>
+
+        <div class="preview" id="preview" style="display:none;">
+            <h3 id="pTitle"></h3>
+            <p id="pNews"></p>
+            <p id="pAuthor"></p>
+            <p class="category-preview" id="pCategory"></p>
+        </div>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/compose.js"></script>
+
+</body>
+
+</html>

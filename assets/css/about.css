@@ -1,0 +1,158 @@
+:root {
+  --primary-blue: #007bff;
+  --dark-navy: #0a1f33;
+  --text-color: #2d3436;
+  --bg-light: #f9fbfc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: var(--bg-light);
+  color: var(--text-color);
+  line-height: 1.8;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.about-hero {
+  background: var(--dark-navy);
+  color: white;
+  padding: 100px 0 150px;
+  text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+.highlight {
+  color: var(--primary-blue);
+}
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  letter-spacing: 1px;
+}
+
+/* Speech Card Styling */
+.speech-card {
+  background: white;
+  padding: 60px;
+  border-radius: 20px;
+  margin-top: -80px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.quote-icon {
+  position: absolute;
+  top: -20px;
+  left: 40px;
+  background: var(--primary-blue);
+  color: white;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+
+.speech-text h2 {
+  color: var(--dark-navy);
+  margin-bottom: 25px;
+  font-size: 2rem;
+  border-bottom: 3px solid var(--primary-blue);
+  display: inline-block;
+}
+
+.speech-text p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+/* Team Breakdown */
+.team-breakdown {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 40px;
+  padding: 30px;
+  background: #f1f7ff;
+  border-radius: 12px;
+}
+
+.team-breakdown h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--primary-blue);
+  margin-bottom: 10px;
+}
+.name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--dark-navy);
+}
+
+/* DEI Footer Section */
+.dei-honors {
+  text-align: center;
+  margin: 50px 0;
+}
+.dei-logo {
+  width: 80px;
+  opacity: 0.7;
+  margin-bottom: 15px;
+}
+
+.about-footer {
+  text-align: center;
+  padding-bottom: 60px;
+}
+.back-home {
+  text-decoration: none;
+  color: var(--dark-navy);
+  font-weight: bold;
+  transition: 0.3s;
+}
+.back-home:hover {
+  color: var(--primary-blue);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .speech-card {
+    padding: 30px;
+  }
+  .team-breakdown {
+    grid-template-columns: 1fr;
+  }
+  .about-hero h1 {
+    font-size: 2rem;
+  }
+}
+
+.team-roles p {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.team-roles p:last-child {
+  margin-bottom: 0;
+}
