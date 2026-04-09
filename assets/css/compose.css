@@ -178,3 +178,55 @@ button[onclick="postData()"]:active {
         font-size: 1.5rem;
     }
 }
+
+@media (max-width: 540px) {
+    body {
+        padding: 16px;
+    }
+
+    .view {
+        justify-content: stretch;
+        margin-bottom: 16px;
+    }
+
+    .view a,
+    .view button {
+        width: 100%;
+    }
+
+    .container {
+        padding: 20px 16px;
+        border-radius: 10px;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        margin-bottom: 22px;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+        padding: 13px 14px;
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    textarea {
+        min-height: 170px;
+    }
+
+    button[onclick="postData()"] {
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    .preview {
+        margin-top: 28px;
+        padding-top: 22px;
+    }
+
+    .preview h3 {
+        font-size: 1.25rem;
+    }
+}
