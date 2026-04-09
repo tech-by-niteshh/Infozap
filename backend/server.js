@@ -55,14 +55,14 @@ const corsOptions = {
       return;
     }
 
-    if (configuredOrigins.includes(origin)) {
-      callback(null, true);
-      return;
-    }
-
     try {
       const parsedOrigin = new URL(origin);
-      if (["localhost", "127.0.0.1"].includes(parsedOrigin.hostname)) {
+      const isConfiguredOrigin = configuredOrigins.includes(origin);
+      const isLocalOrigin = ["localhost", "127.0.0.1"].includes(parsedOrigin.hostname);
+      const isVercelOrigin = parsedOrigin.hostname === "infozap-omega.vercel.app"
+        || parsedOrigin.hostname.endsWith(".vercel.app");
+
+      if (isConfiguredOrigin || isLocalOrigin || isVercelOrigin) {
         callback(null, true);
         return;
       }
@@ -70,7 +70,7 @@ const corsOptions = {
       // Ignore parse failures and fall through to the block below.
     }
 
-    callback(new Error(`CORS blocked for origin: ${origin}`));
+    callback(null, true);
   },
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -137,3 +137,4 @@ if (require.main === module) {
 }
 
 module.exports = app;
+
