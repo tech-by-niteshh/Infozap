@@ -32,15 +32,18 @@ async function postData() {
             body: JSON.stringify(post)
         });
 
+        const data = await response.json().catch(() => ({}));
+
         if (response.ok) {
             alert("Post Saved Successfully! ✅");
             return;
         }
 
-        console.error("Server Error:", response.status);
-        alert(`Error saving post ❌ ${response.status}`);
+        const message = data.message || `Server Error: ${response.status}`;
+        console.error("Server Error:", response.status, data);
+        alert(`Error saving post ❌ ${message}`);
     } catch (error) {
         console.error("CORS or Network Error ❌", error);
-        alert("CORS or Network Error ❌");
+        alert(`CORS or Network Error ❌ ${error.message || "Unknown error"}`);
     }
 }
