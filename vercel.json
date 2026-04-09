@@ -3,11 +3,16 @@
   "builds": [
     { "src": "backend/server.js", "use": "@vercel/node" },
     { "src": "assets/**", "use": "@vercel/static" },
-    { "src": "*.html", "use": "@vercel/static" }
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "favicon.ico", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
-    { "src": "/(.*).html", "dest": "/$1.html" },
-    { "src": "/api/(.*)", "dest": "backend/server.js" }
+    { "src": "/api/(.*)", "dest": "backend/server.js" },
+    { "src": "/view-post", "dest": "/view-post.html" },
+    { "src": "/compose", "dest": "/compose.html" },
+    { "src": "/category", "dest": "/category.html" },
+    { "src": "/about", "dest": "/about.html" },
+    { "src": "/(.*)", "dest": "/$1" }
   ]
 }
