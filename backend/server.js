@@ -1,9 +1,9 @@
 const path = require("path");
 const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
-const connectDB = require("./config/db");
 const postRoutes = require("./routes/postRoutes");
 const logger = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
@@ -13,6 +13,33 @@ dotenv.config();
 const app = express();
 const projectRoot = path.resolve(__dirname, "..");
 const port = process.env.PORT || 5000;
+
+let cachedDb = null;
+let cachedConnectionPromise = null;
+
+async function connectToDatabase() {
+  if (cachedDb) {
+    return cachedDb;
+  }
+
+  if (!process.env.MONGO_URI) {
+    throw new Error("MONGO_URI is missing in the environment.");
+  }
+
+  if (!cachedConnectionPromise) {
+    cachedConnectionPromise = mongoose.connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 5000,
+    });
+  }
+
+  try {
+    cachedDb = await cachedConnectionPromise;
+    return cachedDb;
+  } catch (error) {
+    cachedConnectionPromise = null;
+    throw error;
+  }
+}
 
 app.set("trust proxy", true);
 
@@ -52,7 +79,7 @@ const corsOptions = {
 
 const ensureDatabaseConnection = async (req, res, next) => {
   try {
-    await connectDB();
+    await connectToDatabase();
     next();
   } catch (error) {
     error.statusCode = error.statusCode || 500;
