@@ -7,7 +7,7 @@
         const { protocol, hostname, port, origin } = window.location;
 
         if (protocol === "file:") {
-            return "http://localhost:5000/api";
+            return "/api";
         }
 
         if (["localhost", "127.0.0.1"].includes(hostname) && port !== "5000") {
