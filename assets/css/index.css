@@ -801,3 +801,133 @@ input {
 
 
 
+
+@media (max-width: 540px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .social-icons,
+  .nav-links,
+  .footer-socials {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links {
+    gap: 14px;
+  }
+
+  .cta-button {
+    width: 100%;
+    max-width: 240px;
+    text-align: center;
+  }
+
+  .hero-section,
+  .news-dark-section,
+  .advice-light-section {
+    padding-top: 56px;
+    padding-bottom: 64px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.9rem, 9vw, 2.7rem);
+    margin-bottom: 22px;
+  }
+
+  .section-description,
+  .light-description,
+  .category-intro {
+    font-size: 0.96rem;
+  }
+
+  .search-input {
+    padding: 14px 56px 14px 18px;
+    font-size: 16px;
+  }
+
+  .search-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .spotlight-carousel {
+    min-height: 560px;
+  }
+
+  .spotlight-card {
+    width: min(19rem, 84vw);
+    min-height: 500px;
+    padding: 18px;
+    border-radius: 24px;
+  }
+
+  .spotlight-card.is-active {
+    clip-path: inset(0 round 24px);
+  }
+
+  .spotlight-card.is-prev {
+    transform: translateX(calc(-50% - 34%)) scale(0.95);
+    clip-path: inset(0 72% 0 0 round 24px);
+  }
+
+  .spotlight-card.is-next {
+    transform: translateX(calc(-50% + 34%)) scale(0.95);
+    clip-path: inset(0 0 0 72% round 24px);
+  }
+
+  .spotlight-title {
+    font-size: 1.55rem;
+    line-height: 1.12;
+  }
+
+  .spotlight-summary,
+  .spotlight-hint,
+  .spotlight-author,
+  .card-author {
+    font-size: 0.95rem;
+  }
+
+  .spotlight-actions {
+    align-items: stretch;
+  }
+
+  .like-button,
+  .btn-more {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .advice-card {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .advice-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .advice-card-meta {
+    justify-content: flex-start;
+  }
+
+  .footer {
+    padding-top: 48px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-col,
+  .footer-bottom {
+    text-align: center;
+  }
+}
