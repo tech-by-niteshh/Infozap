@@ -24,7 +24,7 @@ async function postData() {
     };
 
     try {
-        const response = await fetch("https://infozap-omega.vercel.app/api/posts", {
+        const response = await fetch("/api/posts", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
