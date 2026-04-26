@@ -157,7 +157,31 @@ button {
   gap: 30px;
 }
 
+/* ── Category post images ──────────────────────── */
+.news-card-img-wrap {
+  width: 100%;
+  height: 180px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.news-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.news-card:hover .news-card-img {
+  transform: scale(1.05);
+}
+
+/* ──────────────────────────────────────────────── */
+
 .news-card {
+
   display: flex;
   flex-direction: column;
   gap: 18px;

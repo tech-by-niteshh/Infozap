@@ -81,15 +81,19 @@ function renderRelatedPosts(posts) {
         return;
     }
 
-    sideList.innerHTML = posts.slice(0, 3).map((post) => `
+    sideList.innerHTML = posts.slice(0, 3).map((post) => {
+        const imgSrc = window.getCategoryImage ? window.getCategoryImage(post.category, post.id) : "";
+        return `
         <a class="side-item" href="post.html?id=${post.id}">
+            ${imgSrc ? `<img src="${imgSrc}" alt="${escapeHTML(post.category)}" class="side-item-img" loading="lazy">` : ""}
             <div class="side-text">
                 <p>${escapeHTML(post.title)}</p>
                 <span>${escapeHTML(post.category)} • ${escapeHTML(post.date)}</span>
                 <strong>Author: ${escapeHTML(post.author)}</strong>
             </div>
         </a>
-    `).join("");
+    `;
+    }).join("");
 }
 
 function renderLikeButton(post) {

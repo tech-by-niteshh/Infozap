@@ -88,6 +88,7 @@ function updateCarouselHeight() {
 function buildSpotlightCard(post, position, index) {
     const isActive = position === "active";
     const isLiked = window.InfozapAPI?.hasLikedPost(post.id);
+    const imgSrc = window.getCategoryImage ? window.getCategoryImage(post.category, post.id) : "";
     const cardFooter = isActive
         ? `
             <div class="spotlight-actions">
@@ -110,6 +111,7 @@ function buildSpotlightCard(post, position, index) {
             aria-label="${isActive ? `${post.title} is active` : `Show ${post.title} in the center`}"
         >
             <div>
+                ${imgSrc ? `<div class="spotlight-img-wrap"><img src="${imgSrc}" alt="${escapeHTML(post.category)} image" class="spotlight-card-img" loading="lazy"></div>` : ""}
                 <div class="spotlight-topline">
                     <span class="category-pill">${escapeHTML(post.category)}</span>
                     <span class="spotlight-date">${escapeHTML(post.date)}</span>
@@ -218,8 +220,11 @@ function renderAdvice() {
         return;
     }
 
-    adviceGrid.innerHTML = visibleAdvicePosts.map((item, index) => `
+    adviceGrid.innerHTML = visibleAdvicePosts.map((item, index) => {
+        const imgSrc = window.getCategoryImage ? window.getCategoryImage(item.category, item.id) : "";
+        return `
         <article class="advice-card">
+            ${imgSrc ? `<div class="advice-card-img-wrap"><img src="${imgSrc}" alt="${escapeHTML(item.category)} image" class="advice-card-img" loading="lazy"></div>` : ""}
             <div class="advice-card-header">
                 <span class="advice-order">${String(index + 1).padStart(2, "0")}</span>
                 <div class="advice-card-meta">
@@ -231,7 +236,8 @@ function renderAdvice() {
             <p>${escapeHTML(item.summary)}</p>
             <p class="card-author">Author: ${escapeHTML(item.author)}</p>
         </article>
-    `).join("");
+    `;
+    }).join("");
 }
 
 async function handleLike(postId) {

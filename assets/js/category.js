@@ -98,8 +98,11 @@ function renderCategoryPosts(posts) {
         return;
     }
 
-    categoryGrid.innerHTML = visiblePosts.map((post) => `
+    categoryGrid.innerHTML = visiblePosts.map((post) => {
+        const imgSrc = window.getCategoryImage ? window.getCategoryImage(post.category, post.id) : "";
+        return `
         <article class="news-card">
+            ${imgSrc ? `<div class="news-card-img-wrap"><img src="${imgSrc}" alt="${escapeHTML(post.category)} image" class="news-card-img" loading="lazy"></div>` : ""}
             <div class="card-meta">
                 <span class="category-pill">${escapeHTML(post.category)}</span>
                 <span>${escapeHTML(post.date)}</span>
@@ -108,7 +111,8 @@ function renderCategoryPosts(posts) {
             <p class="card-summary">${escapeHTML(post.summary)}</p>
             <p class="card-author">Author: ${escapeHTML(post.author)}</p>
         </article>
-    `).join("");
+    `;
+    }).join("");
 }
 
 async function loadCategoryPosts() {
